@@ -101,7 +101,3 @@ input. A missing dataset stops the run — recorded as `"status": "not_run"`, or
 raised as `FileNotFoundError`, never filled in with generated data — so a
 completed result file is itself evidence the real archive was read.
 
-## Licence
-
-MIT for the code. The datasets are not covered by it and carry their own terms,
-listed above. The manuscript is the authors' work.
