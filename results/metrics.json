@@ -1,0 +1,262 @@
+{
+  "slice": "E04 \u2014 Label-efficiency curves: how many annotated tiles do you need?",
+  "research_question": "Training on Kather-2016 and testing BOTH in-domain and on CRC-VAL-HE-7K, how does tissue-classification accuracy grow with the number of labelled tiles per class \u2014 and at what point does adding annotations stop paying? The curve is measured with repeated draws so the plateau is not a fluke of one subsample.",
+  "status": "completed",
+  "generated_utc": "2026-08-20T04:10:21Z",
+  "environment": {
+    "python": "3.10.12",
+    "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.35",
+    "numpy": "2.2.6",
+    "opencv": "5.0.0"
+  },
+  "data_provenance": [
+    {
+      "path": "/sessions/rcw-01y4vh6thapnx7tjwetk23c9/mnt/Dr Shanthi/datasets/Kather_CRC_5000/Kather_texture_2016_image_tiles_5000.zip",
+      "bytes": 258098431,
+      "mtime": "2026-08-19 05:19:04",
+      "md5_first_1mib": "90e64374e0e00964bab4940b84e3325a"
+    },
+    {
+      "path": "/sessions/rcw-01y4vh6thapnx7tjwetk23c9/mnt/Dr Shanthi/datasets/CRC-VAL-HE-7K/CRC-VAL-HE-7K.zip",
+      "bytes": 800276929,
+      "mtime": "2026-08-19 05:40:38",
+      "md5_first_1mib": "7f4682f7e77ced04b40300f679f25416"
+    }
+  ],
+  "config": {
+    "seed": 0,
+    "tile_size": 112,
+    "label_budgets": [
+      5,
+      10,
+      25,
+      50,
+      100,
+      200,
+      300
+    ],
+    "n_repeats": 5,
+    "test_size": 0.3,
+    "max_per_class_train": 300,
+    "max_per_class_test": 300
+  },
+  "results": {
+    "dataset_audit": {
+      "kather_native_counts": {
+        "01_TUMOR": 625,
+        "02_STROMA": 625,
+        "03_COMPLEX": 625,
+        "04_LYMPHO": 625,
+        "05_DEBRIS": 625,
+        "06_MUCOSA": 625,
+        "07_ADIPOSE": 625,
+        "08_EMPTY": 625
+      },
+      "crcval_native_counts": {
+        "ADI": 1338,
+        "BACK": 847,
+        "DEB": 339,
+        "LYM": 634,
+        "MUC": 1035,
+        "MUS": 592,
+        "NORM": 741,
+        "STR": 421,
+        "TUM": 1233
+      },
+      "n_source_used": 2100,
+      "n_target_used": 2100,
+      "shared_classes": [
+        "TUMOUR",
+        "STROMA",
+        "LYMPHO",
+        "DEBRIS",
+        "MUCOSA",
+        "ADIPOSE",
+        "EMPTY"
+      ]
+    },
+    "curve": [
+      {
+        "labels_per_class": 5,
+        "total_labels_mean": 35.0,
+        "n_repeats": 5,
+        "in_domain_accuracy_mean": 0.7336507936507937,
+        "in_domain_accuracy_std": 0.042879476837849,
+        "cross_domain_accuracy_mean": 0.36933333333333335,
+        "cross_domain_accuracy_std": 0.03876623352452498,
+        "in_domain_balacc_mean": 0.7336507936507937,
+        "cross_domain_balacc_mean": 0.36933333333333335,
+        "cross_domain_macroF1_mean": 0.33156461180454827,
+        "generalisation_gap": 0.3643174603174603
+      },
+      {
+        "labels_per_class": 10,
+        "total_labels_mean": 70.0,
+        "n_repeats": 5,
+        "in_domain_accuracy_mean": 0.8098412698412698,
+        "in_domain_accuracy_std": 0.03542777492419779,
+        "cross_domain_accuracy_mean": 0.38495238095238093,
+        "cross_domain_accuracy_std": 0.08948915235950487,
+        "in_domain_balacc_mean": 0.8098412698412698,
+        "cross_domain_balacc_mean": 0.38495238095238093,
+        "cross_domain_macroF1_mean": 0.35493727643754774,
+        "generalisation_gap": 0.42488888888888887
+      },
+      {
+        "labels_per_class": 25,
+        "total_labels_mean": 175.0,
+        "n_repeats": 5,
+        "in_domain_accuracy_mean": 0.8917460317460317,
+        "in_domain_accuracy_std": 0.008302664654363202,
+        "cross_domain_accuracy_mean": 0.40980952380952385,
+        "cross_domain_accuracy_std": 0.029424718502594312,
+        "in_domain_balacc_mean": 0.8917460317460317,
+        "cross_domain_balacc_mean": 0.40980952380952385,
+        "cross_domain_macroF1_mean": 0.36595220272898743,
+        "generalisation_gap": 0.4819365079365079
+      },
+      {
+        "labels_per_class": 50,
+        "total_labels_mean": 350.0,
+        "n_repeats": 5,
+        "in_domain_accuracy_mean": 0.9101587301587302,
+        "in_domain_accuracy_std": 0.007942854605204325,
+        "cross_domain_accuracy_mean": 0.3958095238095238,
+        "cross_domain_accuracy_std": 0.0343932177040224,
+        "in_domain_balacc_mean": 0.9101587301587303,
+        "cross_domain_balacc_mean": 0.3958095238095238,
+        "cross_domain_macroF1_mean": 0.3400213195863214,
+        "generalisation_gap": 0.5143492063492063
+      },
+      {
+        "labels_per_class": 100,
+        "total_labels_mean": 700.0,
+        "n_repeats": 5,
+        "in_domain_accuracy_mean": 0.9307936507936508,
+        "in_domain_accuracy_std": 0.006237105620440814,
+        "cross_domain_accuracy_mean": 0.3860952380952381,
+        "cross_domain_accuracy_std": 0.07391077540581235,
+        "in_domain_balacc_mean": 0.9307936507936508,
+        "cross_domain_balacc_mean": 0.3860952380952381,
+        "cross_domain_macroF1_mean": 0.3553842121946958,
+        "generalisation_gap": 0.5446984126984127
+      },
+      {
+        "labels_per_class": 200,
+        "total_labels_mean": 1400.0,
+        "n_repeats": 5,
+        "in_domain_accuracy_mean": 0.9466666666666667,
+        "in_domain_accuracy_std": 0.002375655483665986,
+        "cross_domain_accuracy_mean": 0.3738095238095238,
+        "cross_domain_accuracy_std": 0.017977057689583218,
+        "in_domain_balacc_mean": 0.9466666666666667,
+        "cross_domain_balacc_mean": 0.3738095238095238,
+        "cross_domain_macroF1_mean": 0.33320149802052723,
+        "generalisation_gap": 0.5728571428571428
+      },
+      {
+        "labels_per_class": 300,
+        "total_labels_mean": 1470.0,
+        "n_repeats": 5,
+        "in_domain_accuracy_mean": 0.946031746031746,
+        "in_domain_accuracy_std": 0.0,
+        "cross_domain_accuracy_mean": 0.37047619047619046,
+        "cross_domain_accuracy_std": 0.0,
+        "in_domain_balacc_mean": 0.946031746031746,
+        "cross_domain_balacc_mean": 0.3704761904761905,
+        "cross_domain_macroF1_mean": 0.3302442779808713,
+        "generalisation_gap": 0.5755555555555556
+      }
+    ],
+    "marginal_value_in_domain": [
+      {
+        "from": 5,
+        "to": 10,
+        "factor": 2.0,
+        "delta": 0.0762,
+        "delta_per_doubling": 0.0762
+      },
+      {
+        "from": 10,
+        "to": 25,
+        "factor": 2.5,
+        "delta": 0.0819,
+        "delta_per_doubling": 0.062
+      },
+      {
+        "from": 25,
+        "to": 50,
+        "factor": 2.0,
+        "delta": 0.0184,
+        "delta_per_doubling": 0.0184
+      },
+      {
+        "from": 50,
+        "to": 100,
+        "factor": 2.0,
+        "delta": 0.0206,
+        "delta_per_doubling": 0.0206
+      },
+      {
+        "from": 100,
+        "to": 200,
+        "factor": 2.0,
+        "delta": 0.0159,
+        "delta_per_doubling": 0.0159
+      },
+      {
+        "from": 200,
+        "to": 300,
+        "factor": 1.5,
+        "delta": -0.0006,
+        "delta_per_doubling": -0.0011
+      }
+    ],
+    "marginal_value_cross_domain": [
+      {
+        "from": 5,
+        "to": 10,
+        "factor": 2.0,
+        "delta": 0.0156,
+        "delta_per_doubling": 0.0156
+      },
+      {
+        "from": 10,
+        "to": 25,
+        "factor": 2.5,
+        "delta": 0.0249,
+        "delta_per_doubling": 0.0188
+      },
+      {
+        "from": 25,
+        "to": 50,
+        "factor": 2.0,
+        "delta": -0.014,
+        "delta_per_doubling": -0.014
+      },
+      {
+        "from": 50,
+        "to": 100,
+        "factor": 2.0,
+        "delta": -0.0097,
+        "delta_per_doubling": -0.0097
+      },
+      {
+        "from": 100,
+        "to": 200,
+        "factor": 2.0,
+        "delta": -0.0123,
+        "delta_per_doubling": -0.0123
+      },
+      {
+        "from": 200,
+        "to": 300,
+        "factor": 1.5,
+        "delta": -0.0033,
+        "delta_per_doubling": -0.0057
+      }
+    ]
+  },
+  "notes": [],
+  "wall_clock_seconds": 36.3
+}

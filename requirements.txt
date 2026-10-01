@@ -1,0 +1,9 @@
+# Runtime for this pipeline.
+#
+# Every estimator and metric used is implemented from scratch in code/_core/ --
+# there is no scikit-learn, scipy or statsmodels dependency, so results cannot
+# drift with a library upgrade.
+numpy>=1.24
+pandas>=1.5
+opencv-python-headless>=4.7
+matplotlib>=3.6
